@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
@@ -46,7 +47,8 @@ public class EmployeeService {
 	ResponseDto response = new ResponseDto();
 	for (int i = 0; i < employees.size() - 1; i++) {
 	    for (int j = i + 1; j < employees.size(); j++) {
-		if (employees.get(i).getProjectId().equals(employees.get(j).getProjectId())) {
+		if (employees.get(i).getProjectId().equals(employees.get(j).getProjectId())
+			&& !employees.get(i).getEmployeeId().contentEquals(employees.get(j).getEmployeeId())) {
 		    if(isEmployeesWorkedInSamePeriod(employees.get(i), employees.get(j))) {
 			    LocalDate startDate = employees.get(i).getDateFrom().isBefore(employees.get(j).getDateFrom())
 				    ? employees.get(j).getDateFrom() : employees.get(i).getDateFrom();
@@ -75,7 +77,7 @@ public class EmployeeService {
 	String[] lines = content.split("\\r?\\n");
 	List<EmployeeDto> employees = new ArrayList<>();
 	for (String line : lines) {
-	    String[] tokens = line.trim().split(", ");
+	    String[] tokens = Arrays.stream(line.split(",")).map(String::trim).toArray(String[]::new);
 	    if (tokens.length < 4) {
 		logger.info("Record with missing data: {}", line);
 		continue;
