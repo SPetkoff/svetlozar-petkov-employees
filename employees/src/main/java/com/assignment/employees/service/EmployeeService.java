@@ -27,7 +27,7 @@ public class EmployeeService {
     
     private Logger logger = LoggerFactory.getLogger(getClass());
     
-    public final DateTimeFormatter parser = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public final DateTimeFormatter parser = DateTimeFormatter.ofPattern("[yyyy-MM-dd]" + "[yyyy/MM/dd]" + "[ddMMMyyyy]");
 
     public ResponseDto findTeamWithLongestPeriodInCooperation(final MultipartFile file) throws IOException, NotSupportedMimeTypeException, FileEmptyException {
 	// check if file type allowed and if file empty

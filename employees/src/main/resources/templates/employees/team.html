@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>The longest cooperated team</title>
+	
+	<body>
+	
+		<div class="container">
+			<h3 align="center"><a href="/">Team with longest period in cooperation</a></h3>
+			<hr>
+			
+			<br></br>
+			
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Employee ID #1</th>
+						<th>Employee ID #2</th>
+						<th>Project ID</th>
+						<th>Days Worked</th>
+					</tr>
+				</thead>		
+				<tbody>
+					<tr>
+						<td th:text="${response.firstEmployeeId}"/>
+						<td th:text="${response.secondEmployeeId}"/>
+						<td th:text="${response.projectId}"/>
+						<td th:text="${response.daysWorked}"/>
+					</tr>
+				</tbody>
+				
+			</table>
+		</div>
+	</body>
+	
+</html>
